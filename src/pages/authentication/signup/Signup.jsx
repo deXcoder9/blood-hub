@@ -1,8 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../hooks/axios secure/useAxiosSecure";
+import useAuth from "../../../hooks/use auth/useAuth";
 // import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
+  const axiosSecure = useAxiosSecure()
+  const {createUser, updateUserProfile} = useAuth()
+  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -10,7 +16,24 @@ const Signup = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
+    const formData ={
+      ...data,
+      status: "active"
+    } 
+
+    console.log(formData);
+    createUser(formData.email, formData.password)
+    .then(() => {
+      updateUserProfile(formData.name, formData.photourl)
+      .then(result => {
+        console.log(result)
+        navigate("/")
+      })
+    })
+    .catch(error =>{
+      console.log(error.message)
+    })    
   };
 
   return (
@@ -90,7 +113,7 @@ const Signup = () => {
             <label className="label">
               <span className="label-text">District:</span>
             </label>
-            <select defaultValue="default" {...register("bloodGroup", { required: true })}  className=" w-full input input-bordered" >
+            <select defaultValue="default" {...register("district", { required: true })}  className=" w-full input input-bordered" >
             <option   disabled value="default" >
                 select your district
             </option>
@@ -103,7 +126,7 @@ const Signup = () => {
             <label className="label">
               <span className="label-text">Blood Group+</span>
             </label>
-            <select defaultValue="default" {...register("bloodGroup", { required: true })}  className=" w-full input input-bordered" >
+            <select defaultValue="default" {...register("upazilla", { required: true })}  className=" w-full input input-bordered" >
             <option   disabled value="default" >
                 select your upazila
             </option>
@@ -121,7 +144,7 @@ const Signup = () => {
               name="password"
               {...register("password", {
                 required: true,
-                minLength: 7,
+                minLength: 6,
                 maxLength: 20,
               })}
               placeholder="password"
