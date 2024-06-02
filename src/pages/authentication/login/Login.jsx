@@ -6,8 +6,10 @@ import {
 } from "react-simple-captcha";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import useAuth from "../../../hooks/use auth/useAuth";
 
 const Login = () => {
+  const {signIn} = useAuth()
   const [disabled, setDisabled] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,9 +24,8 @@ const Login = () => {
     even.preventDefault();
     const email = even.target.email.value;
     const password = even.target.password.value;
-    console
-      .log(email, password)
-      // signIn(email, password)
+    // console.log(email, password)
+      signIn(email, password)
       .then(() => {
         Swal.fire({
           title: "Successfully logged In",
@@ -64,7 +65,7 @@ const Login = () => {
       {/* <Helmet>
         <title>Login | Bistro Boss</title>
       </Helmet> */}
-      <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div className="card shrink-0 w-full max-w-sm shadow-2xl ">
         <form onSubmit={handleLogin} className="card-body">
           <div className="form-control">
             <label className="label">

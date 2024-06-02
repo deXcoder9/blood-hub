@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import useAxiosSecure from "../../../hooks/axios secure/useAxiosSecure";
 import useAuth from "../../../hooks/use auth/useAuth";
+import useAxiosPublic from "../../../hooks/axios public/useAxiosPublic";
 // import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
-  const axiosSecure = useAxiosSecure()
   const {createUser, updateUserProfile} = useAuth()
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
 
   const {
@@ -26,10 +26,20 @@ const Signup = () => {
     createUser(formData.email, formData.password)
     .then(() => {
       updateUserProfile(formData.name, formData.photourl)
-      .then(result => {
-        console.log(result)
-        navigate("/")
+      .then(() => {
+        console.log("profile updated !")
+        // navigate("/")
       })
+      // send data to the server
+      axiosPublic.post('/users', formData)
+      .then(respose =>{
+        if(respose.data.insertedId){
+          console.log("user created and stored successfully")
+        }
+      })
+
+
+
     })
     .catch(error =>{
       console.log(error.message)
@@ -182,8 +192,7 @@ const Signup = () => {
           </div>
         </form>
         <button className="btn">
-          {" "}
-          <Link to="/">Go Home</Link>{" "}
+          <Link to="/">Go Home</Link>
         </button>
       </div>
     </div>

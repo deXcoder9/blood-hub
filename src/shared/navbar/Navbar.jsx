@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const handleLogOut = () =>{
     logOut()
-    .then(alert=>{
+    .then(()=>{
       alert("Logged Out Successfully")
     })
   }
@@ -72,7 +72,7 @@ const Navbar = () => {
               >
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  src={userInfo.photoURL}
                 />
               </div>
             </div>
@@ -80,14 +80,10 @@ const Navbar = () => {
               tabIndex={0}
               className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a className="justify-between">
+              <li  >
+                <Link to="/profile" className="justify-between">
                   Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
-                <a>Settings</a>
+                </Link>
               </li>
               <li onClick={handleLogOut}> 
                 <a>Logout</a>
