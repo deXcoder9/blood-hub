@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import auth from "../../firebase.config";
+import { useNavigate } from "react-router-dom";
 
 
 export const AuthContext = createContext(null)
@@ -11,13 +12,14 @@ const AuthProvider = ({children}) => {
     const [userInfo, setUserInfo] = useState(null)
     const [loading, setLoading]= useState(true)
 
-
     useEffect( () =>{
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
             if(currentUser){
                 setUserInfo(currentUser)
             }else{
                 setUserInfo(null)
+                // window.location.href = "/"
+
             }
             setLoading(false)
         })
