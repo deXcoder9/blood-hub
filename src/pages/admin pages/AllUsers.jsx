@@ -4,7 +4,7 @@ import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
 
 const AllUsers = () => {
     const axiosSecure = useAxiosSecure()
-    const {data: users=[]} = useQuery({
+    const {data: users=[], refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users')
@@ -12,7 +12,38 @@ const AllUsers = () => {
         }
     })
 
-    console.log(users)
+    const handleMakeAdmin = user => {
+      axiosSecure.patch(`/users/makeadmin/${user._id}`)
+      .then(res => {
+        console.log(res.data)
+        refetch()
+      })
+    } 
+    const handleMakeVolunteer = user => {
+      axiosSecure.patch(`/users/makevolunteer/${user._id}`)
+      .then(res => {
+        console.log(res.data)
+        refetch()
+      })
+    } 
+    const handleBlockUser = user =>{
+      axiosSecure.patch(`/users/block/${user._id}`)
+     .then(res => {
+      console.log(res.data)
+      refetch()
+     })
+    }
+    const handleUnBlockUser = user =>{
+      axiosSecure.patch(`/users/unblock/${user._id}`)
+     .then(res => {
+      console.log(res.data)
+      refetch()
+     })
+    }
+
+
+
+    // console.log(users)
     return (
         <div>
             all users{users.length}
@@ -61,11 +92,31 @@ const AllUsers = () => {
               {user.role}
               <br/>
             </td>
-            <td>
-              <button className="btn btn-ghost btn-xs">{user.status}</button>
+            <td> {user.status} </td>
+            {
+              user?.status === "active" ? <td>
+              <button onClick={() => handleBlockUser(user)} className="btn btn-ghost btn-xs bg-red-600">Block</button>
             </td>
-            <td>Volunteer</td>
-            <td>Make Admin</td>
+            :
+            <td>
+              <button onClick={() => handleUnBlockUser(user)} className="btn btn-ghost btn-xs bg-green-600">Unblock</button>
+            </td>
+            }
+            {
+                user.role === "volunteer" ? 
+                <td>
+            </td>
+            :
+            <button onClick={() =>handleMakeVolunteer(user)} className="btn">Make Volunteer</button>
+              }
+              {
+                user.role === "admin" ? 
+                <td>
+            </td>
+            :
+            <button onClick={() =>handleMakeAdmin(user)} className="btn">Make Admin</button>
+              }
+            
           </tr>)
       }
     </tbody>
