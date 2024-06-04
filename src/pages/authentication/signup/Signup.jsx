@@ -7,7 +7,7 @@ import useAxiosPublic from "../../../hooks/axios public/useAxiosPublic";
 const Signup = () => {
   const {createUser, updateUserProfile} = useAuth()
   const axiosPublic = useAxiosPublic()
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const {
     register,
@@ -19,7 +19,8 @@ const Signup = () => {
     // console.log(data);
     const formData ={
       ...data,
-      status: "active"
+      status: "active",
+      role:"donor"
     } 
 
     console.log(formData);

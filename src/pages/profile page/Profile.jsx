@@ -12,6 +12,7 @@ const Profile = () => {
       
     }
     
+    console.log(userData)
 
     return (
         <div className=" grid place-items-center mt-20">
