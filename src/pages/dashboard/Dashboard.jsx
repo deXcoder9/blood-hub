@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
 
-    const role = "admin";
+    const role = "donor";
 
     return (
         <div className="flex">
@@ -16,7 +16,7 @@ const Dashboard = () => {
             role ==="admin"  && <div>
                 <ul className="bg-gray-400 pl-10 pr-7 space-y-3">
                     <li>
-                    <NavLink to="/adminhome">
+                    <NavLink to="/dashboard/admin-home">
                         Home
                     </NavLink>
                     </li>
@@ -38,7 +38,23 @@ const Dashboard = () => {
         }
         {/* d o n o  r */}
         {
-            role === "donor" && <p> im donor</p> 
+            role === "donor" && <ul className="bg-gray-400 pl-10 pr-7 space-y-3">
+            <li>
+            <NavLink to="/dashboard/admin-home">
+                Home
+            </NavLink>
+            </li>
+            <li>
+            <NavLink to="/dashboard/create-donation-request">
+                Create Donation Requests
+            </NavLink>
+            </li>
+            <li>
+            <NavLink to="/totaldonationrequests">
+                Total Donation Requests
+            </NavLink>
+            </li>
+        </ul>
         }
         {
             role === "volunteer" && <p> Im volunteer </p>

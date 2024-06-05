@@ -5,6 +5,8 @@ import Profile from "../pages/profile page/Profile";
 import Body from "../layout/Body";
 import Dashboard from "../pages/dashboard/Dashboard";
 import AllUsers from "../pages/admin pages/AllUsers";
+import AdminHome from "../pages/admin pages/AdminHome";
+import CreateDonation from "../pages/donor pages/CreateDonation";
 
 export const router = createBrowserRouter([
     {
@@ -32,6 +34,14 @@ export const router = createBrowserRouter([
         {
           path: "all-users",
           element: <AllUsers></AllUsers>
+        },
+        {
+          path: "admin-home",
+          element: <AdminHome></AdminHome>
+        },
+        {
+          path: "create-donation-request",
+          element:<CreateDonation></CreateDonation>
         }
       ]
     }
