@@ -7,7 +7,7 @@ const Dashboard = () => {
 
     return (
         <div className="flex">
-            <div>
+            <div className="">
         <Link to="/dashboard/profile">
         <button className="btn">Pfp</button>
         </Link>
@@ -50,7 +50,7 @@ const Dashboard = () => {
             </NavLink>
             </li>
             <li>
-            <NavLink to="/totaldonationrequests">
+            <NavLink to="/dashboard/my-donation-requests">
                 Total Donation Requests
             </NavLink>
             </li>
@@ -60,7 +60,7 @@ const Dashboard = () => {
             role === "volunteer" && <p> Im volunteer </p>
         }
             </div>
-            <div>
+            <div className=" max-w-[1200px] mt-20 ml-16 " >
                 <Outlet />
             </div>
         </div>

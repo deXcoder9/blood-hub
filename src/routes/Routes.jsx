@@ -7,6 +7,7 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import AllUsers from "../pages/admin pages/AllUsers";
 import AdminHome from "../pages/admin pages/AdminHome";
 import CreateDonation from "../pages/donor pages/CreateDonation";
+import DonationRequests from "../pages/donor pages/DonationRequests";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
         {
           path: "create-donation-request",
           element:<CreateDonation></CreateDonation>
+        },
+        {
+          path: "my-donation-requests",
+          element: <DonationRequests></DonationRequests>
         }
       ]
     }
