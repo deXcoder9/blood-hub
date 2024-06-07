@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
 import useAuth from "../../hooks/use auth/useAuth";
+import Swal from "sweetalert2";
 
 const CreateDonation = () => {
 const {userInfo} = useAuth()
@@ -18,6 +19,15 @@ const {userInfo} = useAuth()
     }
     serialNO += 1
    axiosSecure.post('/donationrequests', formData )
+   .then(() =>{
+    // refetch()
+     Swal.fire({
+       title: "Donation Requested",
+       text: "Your donation request has been sent successfully",
+       icon: "success",
+       confirmButtonText: "Ok",
+     })
+   })
     console.log(formData);
   };
   

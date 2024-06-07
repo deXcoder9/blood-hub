@@ -1,9 +1,13 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
+import useDonationReq from "../../hooks/useDonationReq";
 
 
 const Dashboard = () => {
-
     const role = "donor";
+
+    const [requests] = useDonationReq()
+
+
 
     return (
         <div className="flex">
@@ -51,7 +55,8 @@ const Dashboard = () => {
             </li>
             <li>
             <NavLink to="/dashboard/my-donation-requests">
-                Total Donation Requests
+                Total Donation Requests({requests.length})
+
             </NavLink>
             </li>
         </ul>

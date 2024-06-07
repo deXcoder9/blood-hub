@@ -1,17 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
+
 import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
 import Swal from "sweetalert2";
+import useDonationReq from "../../hooks/useDonationReq";
 
 const DonationRequests = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: requests = [], refetch } = useQuery({
-    queryKey: ["requests"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/donationrequests");
-      return res.data;
-    },
-  });
+  const [requests, refetch] = useDonationReq()
+  // console.log("hooks", requests)
+
+  // const { data: request = [], refetch } = useQuery({
+  //   queryKey: ["requests"],
+  //   queryFn: async () => {
+  //     const res = await axiosSecure.get("/donationrequests");
+  //     return res.data;
+  //   },
+  // });
 
   const handleDelete = (requests) => {
     Swal.fire({
@@ -38,7 +42,7 @@ const DonationRequests = () => {
       });
   };
 
-  console.log(requests);
+  // console.log(requests);
 
   return (
     <div className="max-w-[1200px] mx-auto ">

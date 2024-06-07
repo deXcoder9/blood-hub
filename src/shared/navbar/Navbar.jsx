@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/use auth/useAuth";
+import { useEffect } from "react";
+import useAxiosPublic from "../../hooks/axios public/useAxiosPublic";
 
 const Navbar = () => {
   const { userInfo, logOut } = useAuth();
+  const axiosPublic = useAxiosPublic()
+
   console.log(userInfo);
 
   const navLinks = <>
