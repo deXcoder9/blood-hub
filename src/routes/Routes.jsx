@@ -8,6 +8,8 @@ import AllUsers from "../pages/admin pages/AllUsers";
 import AdminHome from "../pages/admin pages/AdminHome";
 import CreateDonation from "../pages/donor pages/CreateDonation";
 import DonationRequests from "../pages/donor pages/DonationRequests";
+import DRDetails from "../shared/donation req details/DRDetails";
+import UpdateDonation from "../shared/update donation req/UpdateDonation";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +50,15 @@ export const router = createBrowserRouter([
           path: "my-donation-requests",
           element: <DonationRequests></DonationRequests>
         }
+        
       ]
+    },
+    {
+      path:"/donation-request-details/:id",
+      element: <DRDetails></DRDetails>
+    },
+    {
+      path:"/update-donation-request/:id",
+      element: <UpdateDonation></UpdateDonation>
     }
   ]);

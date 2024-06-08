@@ -3,14 +3,14 @@ import useAxiosSecure from "./axios secure/useAxiosSecure";
 import useAuth from "./use auth/useAuth";
 
 
-const useDonationReq = () => {
+const useDonationReq = (selectedValue) => {
     const {userInfo} = useAuth()
-    console.log(userInfo)
+    // console.log(userInfo)
     const axiosSecure = useAxiosSecure()
     const {refetch, data:requests =[]} = useQuery({
-        queryKey: ['request', userInfo?.email],
+        queryKey: ['request', userInfo?.email, selectedValue],
         queryFn: async () => {
-           const res  = await axiosSecure.get(`/donationrequestbyemail/?email=${userInfo?.email}`)
+           const res  = await axiosSecure.get(`/donationrequestbyemail?email=${userInfo?.email}&sort=${selectedValue}`)
            return res.data
         }
     })
