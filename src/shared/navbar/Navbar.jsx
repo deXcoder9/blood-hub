@@ -1,13 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/use auth/useAuth";
-import { useEffect } from "react";
-import useAxiosPublic from "../../hooks/axios public/useAxiosPublic";
+import useUserdata from "../../hooks/use user data/useUserdata";
+// import { useEffect } from "react";
+// import useAxiosPublic from "../../hooks/axios public/useAxiosPublic";
 
 const Navbar = () => {
   const { userInfo, logOut } = useAuth();
-  const axiosPublic = useAxiosPublic()
+  // const axiosPublic = useAxiosPublic()
+  const {userData} = useUserdata()
+  console.log(userData)
 
-  console.log(userInfo);
+  // console.log(userInfo);
 
   const navLinks = <>
       <li>
@@ -90,7 +93,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/dashboard">
+                <Link to="/dashboard/">
                 Dashboard
                 </Link>
               </li>

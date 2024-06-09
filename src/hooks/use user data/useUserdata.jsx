@@ -8,7 +8,7 @@ const useUserdata = () => {
     const {data: userData , refetch} = useQuery({
         queryKey: ['user', userInfo?.email],
         queryFn: async () => {
-           const res  = await axiosSecure.get(`/users/?email=${userInfo?.email}`)
+           const res  = await axiosSecure.get(`/loggedinusers/?email=${userInfo?.email}`)
            return res.data
         }
     })

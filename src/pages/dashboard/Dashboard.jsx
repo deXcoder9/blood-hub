@@ -44,7 +44,7 @@ const Dashboard = () => {
         {
             role === "donor" && <ul className="bg-gray-400 pl-10 pr-7 space-y-3">
             <li>
-            <NavLink to="/dashboard/admin-home">
+            <NavLink to="/dashboard/donor-home">
                 Home
             </NavLink>
             </li>
