@@ -27,8 +27,11 @@ const {userInfo} = useAuth()
        icon: "success",
        confirmButtonText: "Ok",
      })
+     setTimeout(function(){
+      window.location.reload()
+     }, 1400)
    })
-    console.log(formData);
+    // console.log(formData);
   };
   
   return (

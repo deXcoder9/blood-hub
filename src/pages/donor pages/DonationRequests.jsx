@@ -244,9 +244,11 @@ const DonationRequests = () => {
         </tbody>
       </table>
       <div className=" flex justify-center mt-7  ">
-        <button className="btn  btn-primary  " onClick={showMore}>
-          {!showAll ? "Show more" : "Show less"}
-        </button>
+       {
+        requests.length > 7 &&  <button className="btn  btn-primary  " onClick={showMore}>
+        {!showAll ? "Show more" : "Show less"}
+      </button>
+       }
       </div>
     </div>
   );

@@ -1,15 +1,34 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import useDonationReq from "../../hooks/useDonationReq";
+import useSpecifiedDOnorData from "../../hooks/useSpecifiedDOnorData";
+import useAuth from "../../hooks/use auth/useAuth";
 
 
 const Dashboard = () => {
-    const role = "donor";
+    const {userInfo} = useAuth()
+    const role = "admin";
+    const [recentReq] = useSpecifiedDOnorData()
+    const openPopUp = () => {
+        setTimeout(() => {
+            document.getElementById('my_modal_3').showModal();
+        }, 500);
+    }
 
-    const [requests] = useDonationReq()
-
-
-
+    openPopUp()
     return (
+        <div>
+            <div  className="">
+                <dialog  id="my_modal_3" className="modal">
+                    <div className="modal-box">
+                        <form method="dialog">
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                        <div>
+                            WELCOME <p className="uppercase text-4xl">{userInfo?.displayName}</p>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+
         <div className="flex">
             <div className="">
         <Link to="/dashboard/profile">
@@ -43,11 +62,13 @@ const Dashboard = () => {
         {/* d o n o  r */}
         {
             role === "donor" && <ul className="bg-gray-400 pl-10 pr-7 space-y-3">
-            <li>
+           {
+            recentReq.length > 0 &&  <li>
             <NavLink to="/dashboard/donor-home">
                 Home
             </NavLink>
             </li>
+           }
             <li>
             <NavLink to="/dashboard/create-donation-request">
                 Create Donation Requests
@@ -55,7 +76,7 @@ const Dashboard = () => {
             </li>
             <li>
             <NavLink to="/dashboard/my-donation-requests">
-                My Donation Requests({requests.length})
+                My Donation Requests({recentReq.length})
 
             </NavLink>
             </li>
@@ -68,6 +89,10 @@ const Dashboard = () => {
             <div className=" max-w-[1200px] mt-20 ml-16 " >
                 <Outlet />
             </div>
+
+
+            
+        </div>
         </div>
     );
 };

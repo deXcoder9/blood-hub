@@ -1,25 +1,17 @@
 
-import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
-import useAuth from "../../hooks/use auth/useAuth";
-import { useQuery } from "@tanstack/react-query";
+
+import useSpecifiedDOnorData from "../../hooks/useSpecifiedDOnorData";
 
 
 const DonorHome = () => {
-    const axiosSecure = useAxiosSecure()
-    const {userInfo} = useAuth()
-    const {data: recentReq=[]} = useQuery({
-        queryKey:["requests", userInfo?.email] ,
-        queryFn: async() =>{
-            const res  = await axiosSecure.get(`/recentdonationrequests?email=${userInfo?.email}`)
-            return res.data
-        }
-    })
+    
 
-    console.log(recentReq)
+  const [recentReq] = useSpecifiedDOnorData()
+
+
 
     return (
         <div>
-                {/* <h1>Hii</h1> */}
                 <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -41,7 +33,7 @@ const DonorHome = () => {
             <br />
             {recent.donationDate}
         </td>
-        <td>{recent.status}</td>
+        <td>{recent.status} , {recent.userEmail}</td>
       </tr>)
       }
       
