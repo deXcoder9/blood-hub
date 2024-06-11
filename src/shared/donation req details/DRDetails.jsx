@@ -1,27 +1,26 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,  useParams } from "react-router-dom";
 import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import useUserdata from "../../hooks/use user data/useUserdata";
 
 
 const DRDetails = () => {
     const [data , setData] = useState([])
     const axiosSecure = useAxiosSecure()
-    const navigate = useNavigate()
     const {id} = useParams()
-    // console.log(id)
+    const {userData} = useUserdata()
+    // console.log(userData)
     
     
     
    useEffect(() =>{
     axiosSecure.get(`donationdetails/${id}`)
     .then(response =>{
-        // console.log(response.data)
-        // datas = response?.data
         setData(response?.data)
     })
    } ,[])
-   console.log(data)
+//    console.log(data)
 
    const handleDonateBtn = () =>{
     Swal.fire({
@@ -42,12 +41,10 @@ const DRDetails = () => {
                     
                     if(res.data.modifiedCount > 0) {
                         Swal.fire({
-                            title: "Deleted!", 
-                            text: "Your file has been deleted.",
+                            title: "Donated!", 
+                            text: "Your donation has been successfull.",
                             icon: "success"
                           });
-
-                          navigate("/dashboard/my-donation-requests")
 
                     }
         })
@@ -71,9 +68,16 @@ const DRDetails = () => {
             <li>Donation Date: {data.donationDate}</li>
            </ul>
            <button onClick={handleDonateBtn}  className="btn btn-outline btn-primary mt-6">Donate</button>
-            <Link to="/dashboard/my-donation-requests">
-           <button className="btn btn-primary mt-4 capitalize">  go back</button>
-           </Link>
+            {
+               userData.role === "donor" && <Link to="/dashboard/my-donation-requests">
+                <button className="btn btn-primary mt-4 capitalize">  go back</button>
+                </Link>
+            }
+            {
+               userData.role === "admin" && <Link to="/dashboard/all-blood-donation-request">
+                <button className="btn btn-primary mt-4 capitalize">  go back</button>
+                </Link>
+            }
         </div>
     );
 };
