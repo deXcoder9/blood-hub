@@ -12,6 +12,8 @@ import DRDetails from "../shared/donation req details/DRDetails";
 import UpdateDonation from "../shared/update donation req/UpdateDonation";
 import DonorHome from "../pages/donor pages/DonorHome";
 import TotalDonationRequests from "../pages/admin pages/TotalDonationRequests";
+import VolunteerHome from "../pages/volunteer pages/VolunteerHome";
+import VolunterDonationReq from "../pages/volunteer pages/VolunterDonationReq";
 
 export const router = createBrowserRouter([
     {
@@ -59,7 +61,15 @@ export const router = createBrowserRouter([
         {
           path: "all-blood-donation-request",
           element: <TotalDonationRequests></TotalDonationRequests>
-        }
+        },
+        {
+          path: "volunteer-home",
+          element: <VolunteerHome></VolunteerHome>
+        },
+        {
+          path: "volunteer-all-blood-donation-request",
+          element: <VolunterDonationReq></VolunterDonationReq>
+        },
         
       ]
     },

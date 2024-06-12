@@ -5,7 +5,7 @@ import useAuth from "../../hooks/use auth/useAuth";
 
 const Dashboard = () => {
     const {userInfo} = useAuth()
-    const role = "admin";
+    const role = "volunteer";
     const [recentReq] = useSpecifiedDOnorData()
     // const openPopUp = () => {
     //     setTimeout(() => {
@@ -82,8 +82,22 @@ const Dashboard = () => {
             </li>
         </ul>
         }
+        {/* Volunteer */}
         {
-            role === "volunteer" && <p> Im volunteer </p>
+            role === "volunteer" &&  <ul className="bg-gray-400 pl-10 pr-7 space-y-3">
+            {
+             recentReq.length > 0 &&  <li>
+             <NavLink to="/dashboard/volunteer-home">
+                 Home
+             </NavLink>
+             </li>
+            }
+             <li>
+             <NavLink to="/dashboard/volunteer-all-blood-donation-request">
+                 All Donation Requests
+             </NavLink>
+             </li>
+         </ul>
         }
             </div>
             <div className=" max-w-[1200px] mt-20 ml-16 " >
