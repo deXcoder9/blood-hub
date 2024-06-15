@@ -5,7 +5,7 @@ import useAuth from "../../hooks/use auth/useAuth";
 
 const Dashboard = () => {
     const {userInfo} = useAuth()
-    const role = "volunteer";
+    const role = "admin";
     const [recentReq] = useSpecifiedDOnorData()
     // const openPopUp = () => {
     //     setTimeout(() => {
@@ -99,6 +99,15 @@ const Dashboard = () => {
              </li>
          </ul>
         }
+
+        <hr />
+        <ul className="mt-20">
+            <li className="pl-10 bg-gray-400  py-2">
+                <NavLink to="/" >
+                    Home
+                </NavLink>
+            </li>
+        </ul>
             </div>
             <div className=" max-w-[1200px] mt-20 ml-16 " >
                 <Outlet />

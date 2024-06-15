@@ -1,14 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/use auth/useAuth";
-import useUserdata from "../../hooks/use user data/useUserdata";
+// import useUserdata from "../../hooks/use user data/useUserdata";
 // import { useEffect } from "react";
 // import useAxiosPublic from "../../hooks/axios public/useAxiosPublic";
 
 const Navbar = () => {
   const { userInfo, logOut } = useAuth();
   // const axiosPublic = useAxiosPublic()
-  const {userData} = useUserdata()
-  console.log(userData)
+  // const {userData} = useUserdata()
+  // console.log(userData)
 
   // console.log(userInfo);
 
@@ -17,7 +17,7 @@ const Navbar = () => {
         <NavLink to="/">Home </NavLink>
       </li>
       <li>
-        <NavLink to="/donationRequests"> Donation Requests</NavLink>
+        <NavLink to="/donation-requests"> Donation Requests</NavLink>
       </li>
       <li>
         <NavLink to="/blog">Blog </NavLink>

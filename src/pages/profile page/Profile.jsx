@@ -40,11 +40,17 @@ const Profile = () => {
             <button onClick={handleUpdateProfile} className="btn1 btn-dark">
               Edit Profile
             </button>
-          </div><div className="text mt-3">
-                <h6>Status: {userData?.status }</h6>
+          </div>
+          <div className="text mt-3">
+
+
+          
+
+
+                {/* <h6>Status: {userData?.status }</h6>
               <h6>BloodGroup: {userData?.bloodGroup}</h6>
               <h6>Districta: {userData?.district}</h6>
-              <h6>upazila: {userData?.upazilla}</h6>
+              <h6>upazila: {userData?.upazilla}</h6> */}
               
             </div> 
           <div className="px-2 rounded mt-4 date">

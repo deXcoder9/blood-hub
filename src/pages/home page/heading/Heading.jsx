@@ -8,7 +8,9 @@ const Heading = () => {
           Join As a Donor{" "}
         </button>
       </Link>
+      <Link to="/search-donations">
       <button className="btn btn-primary text-3xl px-10">Search</button>
+      </Link>
     </div>
   );
 };

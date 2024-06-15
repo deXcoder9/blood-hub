@@ -3,6 +3,7 @@ import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useUserdata from "../../hooks/use user data/useUserdata";
+import useAuth from "../../hooks/use auth/useAuth";
 
 
 const DRDetails = () => {
@@ -10,6 +11,7 @@ const DRDetails = () => {
     const axiosSecure = useAxiosSecure()
     const {id} = useParams()
     const {userData} = useUserdata()
+    const {userInfo} = useAuth()
     // console.log(userData)
     
     
@@ -67,14 +69,27 @@ const DRDetails = () => {
             <li>Donation Time: {data.donationTime}</li>
             <li>Donation Date: {data.donationDate}</li>
            </ul>
-           <button onClick={handleDonateBtn}  className="btn btn-outline btn-primary mt-6">Donate</button>
+           {
+                userInfo && <button onClick={handleDonateBtn}  className="btn btn-outline btn-primary mt-6">Donate</button>
+           }
+
             {
-               userData.role === "donor" && <Link to="/dashboard/my-donation-requests">
+               !userInfo && <Link to="/donation-requests">
                 <button className="btn btn-primary mt-4 capitalize">  go back</button>
                 </Link>
             }
             {
-               userData.role === "admin" && <Link to="/dashboard/all-blood-donation-request">
+               userData?.role === "donor" && <Link to="/dashboard/my-donation-requests">
+                <button className="btn btn-primary mt-4 capitalize">  go back</button>
+                </Link>
+            }
+            {
+               userData?.role === "volunteer" && <Link to="/dashboard/volunteer-all-blood-donation-request">
+                <button className="btn btn-primary mt-4 capitalize">  go back</button>
+                </Link>
+            }
+            {
+               userData?.role === "admin" && <Link to="/dashboard/all-blood-donation-request">
                 <button className="btn btn-primary mt-4 capitalize">  go back</button>
                 </Link>
             }

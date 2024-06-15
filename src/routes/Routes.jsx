@@ -14,12 +14,27 @@ import DonorHome from "../pages/donor pages/DonorHome";
 import TotalDonationRequests from "../pages/admin pages/TotalDonationRequests";
 import VolunteerHome from "../pages/volunteer pages/VolunteerHome";
 import VolunterDonationReq from "../pages/volunteer pages/VolunterDonationReq";
+import PublicDonationRequests from "../pages/public/PublicDonationRequests";
+import Home from "../pages/public/Home";
+import SearchDonations from "../shared/SearchDonations";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Body></Body>   , 
       children:[
+        {
+          path:"/",
+          element: <Home></Home>
+        },
+        {
+          path: "donation-requests",
+          element: <PublicDonationRequests></PublicDonationRequests>
+        },
+        {
+          path: "search-donations",
+          element: <SearchDonations></SearchDonations>
+        }
       ]
     },
     {
@@ -70,6 +85,7 @@ export const router = createBrowserRouter([
           path: "volunteer-all-blood-donation-request",
           element: <VolunterDonationReq></VolunterDonationReq>
         },
+        
         
       ]
     },
