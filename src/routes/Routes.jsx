@@ -17,6 +17,9 @@ import VolunterDonationReq from "../pages/volunteer pages/VolunterDonationReq";
 import PublicDonationRequests from "../pages/public/PublicDonationRequests";
 import Home from "../pages/public/Home";
 import SearchDonations from "../shared/SearchDonations";
+import BlogAdmin from "../pages/admin pages/BlogAdmin";
+import AddBlog from "../shared/AddBlog";
+import BlogVolunteer from "../pages/volunteer pages/BlogVolunteer";
 
 export const router = createBrowserRouter([
     {
@@ -85,9 +88,22 @@ export const router = createBrowserRouter([
           path: "volunteer-all-blood-donation-request",
           element: <VolunterDonationReq></VolunterDonationReq>
         },
+        {
+          path: "content-management",
+          element: <BlogAdmin></BlogAdmin>,
+        },
+        {
+          path: "content-management-volunteer",
+          element: <BlogVolunteer></BlogVolunteer>,
+        }
         
         
       ]
+    },
+    {
+        path: "/dashboard/content-management/add-blog",
+        element: <AddBlog></AddBlog>
+      
     },
     {
       path:"/donation-request-details/:id",

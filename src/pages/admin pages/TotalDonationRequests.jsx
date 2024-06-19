@@ -21,6 +21,7 @@ const TotalDonationRequests = () => {
         refetch()
         setSelectedValue(event.target.value);
         // console.log(event.target.value);
+        // console.log( "selected",selectedValue)
       };
     
       const showMore = () => {
@@ -78,8 +79,8 @@ const TotalDonationRequests = () => {
       <div className="mb-7">
         <select
           className="select select-primary w-full max-w-xs"
-          value={selectedValue} // Bind the state to the value
-          onChange={handleChange} // Bind the event handler to onChange
+          value={selectedValue} 
+          onChange={handleChange} 
         >
           <option  value="default">
             default

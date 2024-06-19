@@ -21,7 +21,7 @@ const SearchDonations = () => {
   console.log(searchedRequests)
 
   return (
-    <div className="max-w-[1200px] mx-auto">
+    <div className="max-w-[1200px] mx-auto  ">
       <form onSubmit={handleSubmit(onSubmit)} className=" grid grid-cols-4  place-items-center" >
         <div className="from-control">
           <label className="label">
