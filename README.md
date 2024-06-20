@@ -1,3 +1,8 @@
+# Hotel Booking Website: Roomify
+admin-email: abc@gmail.com
+admin-password: 111111
+live link: https://bloodhubxdexcoder.netlify.app
+
 
 
 

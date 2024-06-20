@@ -17,7 +17,7 @@ const PublicBlog = () => {
 
 
     return (
-        <div className="max-w-[1000px] mx-auto mt-10">
+        <div className="max-w-[1000px] mx-auto mt-10 min-h-screen">
              <div className="flex justify-between items-center pb-4 font-bold">
           <img src="" alt="" />
           <h4>title</h4>

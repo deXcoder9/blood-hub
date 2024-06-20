@@ -123,7 +123,7 @@ const Dashboard = () => {
             </li>
         </ul>
             </div>
-            <div className=" flex-1 max-w-[1200px]  mt-20 ml-16 " >
+            <div className=" flex-1 max-w-[1200px]  min-h-screen mt-20 ml-16 " >
                 <Outlet />
             </div>
 

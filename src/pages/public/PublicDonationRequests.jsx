@@ -5,7 +5,7 @@ const PublicDonationRequests = () => {
   const [publicDonations] = usePublicDonation();
 
   return (
-    <div className="max-w-[1300px] mx-auto">
+    <div className="max-w-[1300px] min-h-screen mx-auto">
       <div className="overflow-x-auto mt-16">
         <table className="table">
           {/* head */}

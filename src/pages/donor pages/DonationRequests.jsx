@@ -68,7 +68,7 @@ const DonationRequests = () => {
   };
 
   return (
-    <div className="max-w-[1200px] mx-auto mb-10 ">
+    <div className="max-w-[1200px] mx-auto mb-10  ">
       <div className="mb-7">
         <select
           className="select select-primary w-full max-w-xs"
