@@ -74,7 +74,7 @@ const BlogAdmin = () => {
         </div>
         <hr />
         {blogs.map((blog) => (
-          <div key={blog._id} className="flex justify-between items-center">
+          <div key={blog._id} className="flex justify-between items-center my-4">
             <img
               src={blog.image}
               className="max-h-[120px] max-w-[200px]"

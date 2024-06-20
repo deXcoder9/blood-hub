@@ -1,16 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/use auth/useAuth";
-// import useUserdata from "../../hooks/use user data/useUserdata";
-// import { useEffect } from "react";
-// import useAxiosPublic from "../../hooks/axios public/useAxiosPublic";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { userInfo, logOut } = useAuth();
-  // const axiosPublic = useAxiosPublic()
-  // const {userData} = useUserdata()
-  // console.log(userData)
-
-  // console.log(userInfo);
 
   const navLinks = <>
       <li>
@@ -27,7 +20,14 @@ const Navbar = () => {
   const handleLogOut = () =>{
     logOut()
     .then(()=>{
-      alert("Logged Out Successfully")
+      // toast("Logged Out Successfully")
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "logged out successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
     })
   }
 

@@ -172,18 +172,8 @@ const Signup = () => {
             <label className="label"></label>
           </div>
 
-          {/* <div className="form-control">
-          <label className="label">
-          <LoadCanvasTemplate />
-          </label>
-          <input type="text" name="captcha" ref={captchaRef} placeholder="enter the captcha" className=" input input-bordered" required />
-          <label className="label">
-          </label>
-          <button   onClick={handleCapchaValidate} className="btn btn-xs btn-outline">Validate</button>
-        </div> */}
-
           <p>
-            create a new account{" "}
+            already have an  account?
             <Link to="/login" className="text-blue-500 underline">
               here
             </Link>{" "}

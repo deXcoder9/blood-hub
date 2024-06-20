@@ -20,11 +20,14 @@ import SearchDonations from "../shared/SearchDonations";
 import BlogAdmin from "../pages/admin pages/BlogAdmin";
 import AddBlog from "../shared/AddBlog";
 import BlogVolunteer from "../pages/volunteer pages/BlogVolunteer";
+import PrivateRoute from "../private routee/PrivateRoute";
+import ErrorPage from "../error page/ErrorPage";
 
 export const router = createBrowserRouter([
     {
       path: "/",
-      element: <Body></Body>   , 
+      errorElement: <ErrorPage></ErrorPage>,
+      element: <Body></Body>, 
       children:[
         {
           path:"/",
@@ -50,7 +53,7 @@ export const router = createBrowserRouter([
     },
     {
       path: "/dashboard",
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard> </PrivateRoute> ,
       children:[
         {
           path: 'profile',
@@ -107,7 +110,7 @@ export const router = createBrowserRouter([
     },
     {
       path:"/donation-request-details/:id",
-      element: <DRDetails></DRDetails>
+      element: <PrivateRoute><DRDetails></DRDetails> </PrivateRoute>
     },
     {
       path:"/update-donation-request/:id",

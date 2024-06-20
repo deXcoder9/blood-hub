@@ -46,7 +46,6 @@ const AllUsers = () => {
     // console.log(users)
     return (
         <div>
-            all users{users.length}
             <table className="table">
     {/* head */}
     <thead>

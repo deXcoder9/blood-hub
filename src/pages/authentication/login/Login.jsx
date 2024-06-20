@@ -107,8 +107,7 @@ const Login = () => {
             <label className="label"></label>
           </div>
           <p>
-            {" "}
-            a new account{" "}
+            create a new account{" "}
             <Link to="/signup" className="text-blue-500 underline">
               here
             </Link>{" "}

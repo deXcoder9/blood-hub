@@ -8,13 +8,13 @@ const Dashboard = () => {
     const {userInfo} = useAuth()
     const [userDetails] = useUserdata()
     const [recentReq] = useSpecifiedDOnorData()
-    // const openPopUp = () => {
-    //     setTimeout(() => {
-    //         document.getElementById('my_modal_3').showModal();
-    //     }, 500);
-    // }
+    const openPopUp = () => {
+        setTimeout(() => {
+            document.getElementById('my_modal_3').showModal();
+        }, 500);
+    }
 
-    // openPopUp()
+    openPopUp()
     return (
         <div>
             <div  className="">

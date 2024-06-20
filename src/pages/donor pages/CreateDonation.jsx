@@ -2,11 +2,15 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../hooks/axios secure/useAxiosSecure";
 import useAuth from "../../hooks/use auth/useAuth";
 import Swal from "sweetalert2";
+import useUserdata from "../../hooks/use user data/useUserdata";
 
 const CreateDonation = () => {
 const {userInfo} = useAuth()
   const axiosSecure = useAxiosSecure()
   const { register, handleSubmit } = useForm();
+  const [userDetails] = useUserdata()
+  // console.log(userDetails)
+
 
   let serialNO = 0
   const onSubmit = (data) => {
@@ -120,11 +124,16 @@ const {userInfo} = useAuth()
           {...register("message")}
           placeholder="message"
         />
+       {
+        userDetails.status === "active" ?
         <input
-          className="bg-gray-300 border-[1px] border-black rounded-[3px] py-2 text-sm pl-3 pr-11"
-          required
-          type="submit"
-        />
+        className="bg-gray-300 border-[1px] bg-green-500 border-black rounded-[3px] py-2 text-sm pl-3 pr-11"
+        required
+        type="submit"
+      />
+      :
+      <button disabled className="btn ">Submit</button>
+       }
       </form>
     </div>
   );

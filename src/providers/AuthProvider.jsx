@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import auth from "../../firebase.config";
-import { useNavigate } from "react-router-dom";
 
 
 export const AuthContext = createContext(null)
