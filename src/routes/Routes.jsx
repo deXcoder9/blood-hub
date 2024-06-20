@@ -22,6 +22,8 @@ import AddBlog from "../shared/AddBlog";
 import BlogVolunteer from "../pages/volunteer pages/BlogVolunteer";
 import PrivateRoute from "../private routee/PrivateRoute";
 import ErrorPage from "../error page/ErrorPage";
+import PublicBlog from "../pages/public/PublicBlog";
+import BlogDetails from "../pages/public/BlogDetails";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +42,10 @@ export const router = createBrowserRouter([
         {
           path: "search-donations",
           element: <SearchDonations></SearchDonations>
+        },
+        {
+          path: "/blog",
+          element: <PublicBlog></PublicBlog>
         }
       ]
     },
@@ -111,6 +117,10 @@ export const router = createBrowserRouter([
     {
       path:"/donation-request-details/:id",
       element: <PrivateRoute><DRDetails></DRDetails> </PrivateRoute>
+    },
+    {
+      path: "/public-blog-details/:id",
+      element: <BlogDetails></BlogDetails>
     },
     {
       path:"/update-donation-request/:id",

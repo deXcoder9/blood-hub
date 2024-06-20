@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 import doctors from '../../assets/images/doctors.jpg'
 import injections from '../../assets/images/injections.jpg'
 
@@ -15,7 +16,9 @@ const About = () => {
                     <h1 className="text-5xl font-bold">We are qualified & of experience in this field</h1>
                     <p className="py-6">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. </p>
                     <p className="py-6">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which do not look even slightly believable. </p>
-                    <button className="btn btn-primary">Get More Info</button>
+                   <Link to="/blog">
+                   <button className="btn btn-primary">Get More Info</button>
+                   </Link>
                 </div>
             </div>
         </div>
